@@ -15,15 +15,12 @@ const init = () => {
     listTitle,
     form,
   } = renderTodoTask(app, user);
-
   const task = getStorage(user);
-  console.log('task: ', task);
-
 
   renderTask(list, task);
   formControl(form, user, list);
   deleteControl(user, list, task);
-  completeControl(list);
+  completeControl(list, user);
 };
 
 init();

@@ -88,7 +88,7 @@ const createForm = () => {
 
 const createRow = ({task, status}, index) => {
   const tr = document.createElement('tr');
-  tr.classList.add('table-light');
+  tr.classList.add((`${status === 'Выполнено' ? 'table-success' : 'table-light'}`));
   tr.id = index;
 
   const tdNumber = document.createElement('td');
@@ -96,7 +96,7 @@ const createRow = ({task, status}, index) => {
   tdNumber.textContent = index + 1;
 
   const tdTask = document.createElement('td');
-  tdTask.classList.add('task');
+  tdTask.classList.add(`${status === 'Выполнено' ? 'text-decoration-line-through' : 'task'}`);
   tdTask.textContent = task;
 
   const tdStatus = document.createElement('td');
@@ -112,7 +112,7 @@ const createRow = ({task, status}, index) => {
   const btnComplete = document.createElement('button');
   btnComplete.type = 'button';
   btnComplete.classList.add('btn', 'btn-success');
-  btnComplete.textContent = 'Завершить';
+  btnComplete.textContent = `${status === 'Выполнено' ? 'Отменить' : 'Завершить'}`;
   tdActions.append(btnDel, btnComplete);
 
   tr.append(tdNumber, tdTask, tdStatus, tdActions);
