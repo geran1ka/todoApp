@@ -46,7 +46,7 @@ const createTable = () => {
       <th>№</th>
       <th>Задача</th>
       <th>Статус</th>
-      <th>Действия</th>
+      <th colspan="3">Действия</th>
     </tr>
   `);
 
@@ -109,24 +109,28 @@ const createRow = ({task, status}, index) => {
   tdStatus.classList.add('status');
   tdStatus.textContent = status;
 
-  const tdActions = document.createElement('td');
+  const tdBtnDel = document.createElement('td');
   const btnDel = document.createElement('button');
   btnDel.type = 'button';
   btnDel.classList.add('btn', 'btn-danger', 'me-1');
   btnDel.textContent = 'Удалить';
-
+  tdBtnDel.append(btnDel);
+  
+  const tdBtnComplete = document.createElement('td');
   const btnComplete = document.createElement('button');
   btnComplete.type = 'button';
   btnComplete.classList.add('btn', 'btn-success', 'me-1');
   btnComplete.textContent = `${status === 'Выполнено' ? 'Отменить' : 'Завершить'}`;
+  tdBtnComplete.append(btnComplete);
 
+  const tdBtnEdit = document.createElement('td');
   const btnEdit = document.createElement('button');
   btnEdit.type = 'button';
   btnEdit.classList.add('btn', 'btn-primary');
   btnEdit.textContent = 'Редактировать';
+  tdBtnEdit.append(btnEdit);
 
-  tdActions.append(btnDel, btnComplete, btnEdit);
-  tr.append(tdNumber, tdTask, tdStatus, tdActions);
+  tr.append(tdNumber, tdTask, tdStatus, tdBtnDel, tdBtnComplete, tdBtnEdit);
   return tr;
 };
 
