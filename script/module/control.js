@@ -34,12 +34,21 @@ export const completeControl = (list) => {
   list.addEventListener('click', (e) => {
     const target = e.target;
     if (target.closest('.btn-success')) {
-      const tr = document.querySelector('.table-light');
-      tr.className = 'table-success';
-      const taskComplete = tr.querySelector('.task');
-      taskComplete.className = 'text-decoration-line-through';
+      const tr = target.closest('.table-light, .table-success');
+      const taskComplete = tr.querySelector('.task, .text-decoration-line-through');
       const statusComplete = tr.querySelector('.status');
-      statusComplete.textContent = 'Выполнено';
+      const buttonComplete = tr.querySelector('.btn-success')
+      if (target.closest('.table-light')) {
+        tr.className = 'table-success';
+        taskComplete.className = 'text-decoration-line-through';
+        statusComplete.textContent = 'Выполнено';
+        buttonComplete.textContent = 'Отменить';
+      } else {
+        tr.className = 'table-light';
+        taskComplete.className = 'task';
+        statusComplete.textContent = 'В процессе';
+        buttonComplete.textContent = 'Завершить';
+      }
     }
   });
 };

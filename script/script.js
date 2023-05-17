@@ -3,9 +3,6 @@ import {completeControl, deleteControl, formControl} from './module/control.js';
 import {getStorage} from './module/localStorage.js';
 
 
-const addTaskPage = (task, list) => {
-  list.append(createRow(contact));
-};
 const user = 'Роман';
 
 const init = () => {
