@@ -86,13 +86,14 @@ const createForm = () => {
   return form;
 };
 
-const createRow = ({number, task, status}) => {
+const createRow = ({task, status}, index) => {
   const tr = document.createElement('tr');
   tr.classList.add('table-light');
+  tr.id = index;
 
   const tdNumber = document.createElement('td');
   tdNumber.classList.add('number');
-  tdNumber.textContent = number;
+  tdNumber.textContent = index + 1;
 
   const tdTask = document.createElement('td');
   tdTask.classList.add('task');
@@ -118,8 +119,8 @@ const createRow = ({number, task, status}) => {
   return tr;
 };
 
-const addContactPage = (list, task) => {
-  list.append(createRow(task));
+const addContactPage = (list, task, index) => {
+  list.append(createRow(task, index));
 };
 
 export {

@@ -22,7 +22,7 @@ export const renderTodoTask = (app, user) => {
 
 export const renderTask = (elem, data) => {
   elem.textContent = '';
-  const allRow = data.map(item => createRow(item));
+  const allRow = data.map((item, index) => createRow(item, index));
   elem.append(...allRow);
   return allRow;
 };

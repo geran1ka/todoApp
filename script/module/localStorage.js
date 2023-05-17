@@ -10,8 +10,7 @@ const addNewData = (key, value) => {
 
 const removeStorage = (key, value) => {
   const data = getStorage(key);
-  console.log(data);
-  const newData = data.filter(item => item.number !== value);
+  const newData = data.filter((item, index) => index !== value);
   setStorage(key, newData);
 };
 

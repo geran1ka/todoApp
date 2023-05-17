@@ -20,6 +20,7 @@ const init = () => {
   } = renderTodoTask(app, user);
 
   const task = getStorage(user);
+  console.log('task: ', task);
 
 
   renderTask(list, task);
