@@ -23,6 +23,7 @@ const createButtonGroup = params => {
     button.textContent = text; // добавление названия кнопки
     button.className = className; // добавление класса кнопки
 
+
     return button;
   });
   // вставка созданных кнопок в обертку для кнопок
@@ -64,7 +65,7 @@ const createForm = () => {
   form.classList.add('d-flex', 'align-items-center', 'mb-3');
   form.insertAdjacentHTML('beforeend', `
     <label class="form-group me-3 mb-0">
-      <input type="text" class="form-control" name="task" placeholder="ввести задачу">
+      <input type="text" class="form-control" name="task" placeholder="ввести задачу" required>
     </label>
     `);
 
@@ -73,6 +74,7 @@ const createForm = () => {
       className: 'btn btn-primary me-3',
       type: 'submit',
       text: 'Сохранить',
+      disabled: 'disabled',
     },
     {
       className: 'btn btn-danger',
@@ -83,7 +85,11 @@ const createForm = () => {
 
   form.append(...buttonGroup.btns);
 
-  return form;
+  return {
+    form,
+    btnSave: buttonGroup.btns[0],
+    btnReset: buttonGroup.btns[1],
+  };
 };
 
 const createRow = ({task, status}, index) => {

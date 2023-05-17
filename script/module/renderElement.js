@@ -8,7 +8,7 @@ export const renderTodoTask = (app, user) => {
 
   const table = createTable();
   tableWrapper.append(table);
-  const form = createForm();
+  const {form, btnSave, btnReset} = createForm();
   app.append(title, form, tableWrapper);
 
 
@@ -17,6 +17,8 @@ export const renderTodoTask = (app, user) => {
     listTitle: table.thead,
     list: table.tbody,
     form,
+    btnSave,
+    btnReset,
   };
 };
 

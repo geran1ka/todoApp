@@ -2,20 +2,32 @@ import {addContactPage} from './createElement.js';
 import {getStorage, removeStorage, addNewData as addNewTask, setStorage} from './localStorage.js';
 import {renderTask} from './renderElement.js';
 
-export const formControl = (form, user, list) => {
+export const btnSaveActive = (form, btnSave, btnReset ) => {
+  const input = form.querySelector('.form-control');
+  if (!input.value) btnSave.setAttribute('disabled', 'disabled');
+
+  input.addEventListener('input', () => {
+    input.value ? btnSave.removeAttribute('disabled') : btnSave.setAttribute('disabled', 'disabled');
+  });
+
+  btnReset.addEventListener('click', () => {
+    btnSave.setAttribute('disabled', 'disabled');
+  });
+};
+
+export const formControl = (form, user, list, btnSave) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const newTask = Object.fromEntries(formData);
-    console.log('newTask: ', newTask);
+    const index = getStorage(user).length;
 
-    const number = getStorage(user).length;
-    console.log('number: ', number);
     newTask.status = 'В процессе';
+    //newTask.id = Math.random().toString().substring(2, 10);
 
-    newTask.number = number;
     addNewTask(user, newTask);
-    addContactPage(list, newTask, number);
+    addContactPage(list, newTask, index);
+    btnSave.setAttribute('disabled', 'disabled');
     form.reset();
   });
 };
