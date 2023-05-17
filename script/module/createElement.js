@@ -46,7 +46,8 @@ const createTable = () => {
       <th>№</th>
       <th>Задача</th>
       <th>Статус</th>
-      <th colspan="3">Действия</th>
+      <th>Приоритет</th>
+      <th colspan="3" class="text-center">Действия</th>
     </tr>
   `);
 
@@ -67,6 +68,11 @@ const createForm = () => {
     <label class="form-group me-3 mb-0">
       <input type="text" class="form-control" name="task" placeholder="ввести задачу" required>
     </label>
+    <select class="form__select me-3" name="priority">
+      <option value="table-light" selected>обычная</option>
+      <option value="table-warning">важная</option>
+      <option value="table-danger">срочная</option>
+    </select>
     `);
 
   const buttonGroup = createButtonGroup([
@@ -92,7 +98,7 @@ const createForm = () => {
   };
 };
 
-const createRow = ({task, status}, index) => {
+const createRow = ({task, priority, status}, index) => {
   const tr = document.createElement('tr');
   tr.classList.add((`${status === 'Выполнено' ? 'table-success' : 'table-light'}`));
   tr.id = index;
@@ -109,13 +115,17 @@ const createRow = ({task, status}, index) => {
   tdStatus.classList.add('status');
   tdStatus.textContent = status;
 
+  const tdPriority = document.createElement('td');
+  tdPriority.classList.add('priority');
+  tdPriority.textContent = priority;
+
   const tdBtnDel = document.createElement('td');
   const btnDel = document.createElement('button');
   btnDel.type = 'button';
   btnDel.classList.add('btn', 'btn-danger', 'me-1');
   btnDel.textContent = 'Удалить';
   tdBtnDel.append(btnDel);
-  
+
   const tdBtnComplete = document.createElement('td');
   const btnComplete = document.createElement('button');
   btnComplete.type = 'button';
@@ -130,7 +140,7 @@ const createRow = ({task, status}, index) => {
   btnEdit.textContent = 'Редактировать';
   tdBtnEdit.append(btnEdit);
 
-  tr.append(tdNumber, tdTask, tdStatus, tdBtnDel, tdBtnComplete, tdBtnEdit);
+  tr.append(tdNumber, tdTask, tdStatus, tdPriority, tdBtnDel, tdBtnComplete, tdBtnEdit);
   return tr;
 };
 

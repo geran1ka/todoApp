@@ -3,7 +3,8 @@ import {getStorage, removeStorage, addNewData as addNewTask, setStorage} from '.
 import {renderTask} from './renderElement.js';
 
 export const btnSaveActive = (form, btnSave, btnReset) => {
-  const input = form.querySelector('.form-control');
+  const input = form.task;
+  console.log('input: ', input);
   if (!input.value) btnSave.setAttribute('disabled', 'disabled');
 
   input.addEventListener('input', () => {
@@ -19,7 +20,9 @@ export const formControl = (form, user, list, btnSave) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    console.log('formData: ', formData);
     const newTask = Object.fromEntries(formData);
+    console.log('newTask: ', newTask);
     const index = getStorage(user).length;
 
     newTask.status = 'В процессе';
@@ -85,8 +88,6 @@ export const editControl = (list, user) => {
     if (target.closest('.btn-primary')) {
       const tr = target.closest('.table-light, .table-success');
       const taskComplete = tr.querySelector('.task, .text-decoration-line-through');
-      console.log('taskComplete: ', taskComplete);
-      
       const statusComplete = tr.querySelector('.status');
       const buttonComplete = tr.querySelector('.btn-success');
       const buttonEdit = tr.querySelector('.btn-primary');
