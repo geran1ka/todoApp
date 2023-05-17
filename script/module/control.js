@@ -26,7 +26,7 @@ export const formControl = (form, user, list, btnSave) => {
     const index = getStorage(user).length;
 
     newTask.status = 'В процессе';
-    // newTask.id = Math.random().toString().substring(2, 10);
+    newTask.id = Math.random().toString().substring(2, 10);
 
     addNewTask(user, newTask);
     addContactPage(list, newTask, index);
@@ -95,6 +95,7 @@ export const editControl = (list, user) => {
       const id = tr.id;
       if (target.closest('.btn-primary').textContent === 'Редактировать') {
         taskComplete.setAttribute('contenteditable', true);
+        taskComplete.focus();
         tr.className = 'table-light';
         taskComplete.className = 'task';
         statusComplete.textContent = 'В процессе';
