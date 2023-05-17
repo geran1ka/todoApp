@@ -37,10 +37,14 @@ export const deleteControl = (user, list) => {
     const target = e.target;
     if (target.closest('.btn-danger')) {
       const tr = target.closest('.table-light, .table-success');
-      const number = +tr.id;
-      removeStorage(user, number);
-      tr.remove();
-      renderTask(list, getStorage(user));
+      if (confirm(`${user}, Вы действительно хотите удалить задачу`)) {
+        const number = +tr.id;
+        removeStorage(user, number);
+        tr.remove();
+        renderTask(list, getStorage(user));
+      } else {
+        target.closest('.btn-danger').blur();
+      }
     }
   });
 };
