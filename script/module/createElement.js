@@ -63,7 +63,7 @@ const createTable = () => {
 
 const createForm = () => {
   const form = document.createElement('form');
-  form.classList.add('d-flex', 'align-items-center', 'mb-3');
+  form.classList.add('form', 'd-flex', 'align-items-center', 'mb-3');
   form.insertAdjacentHTML('beforeend', `
     <label class="form-group me-3 mb-0">
       <input type="text" class="form-control" name="task" placeholder="ввести задачу" required>
@@ -77,13 +77,13 @@ const createForm = () => {
 
   const buttonGroup = createButtonGroup([
     {
-      className: 'btn btn-primary me-3',
+      className: 'form__btn-primary btn btn-primary me-3',
       type: 'submit',
       text: 'Сохранить',
       disabled: 'disabled',
     },
     {
-      className: 'btn btn-danger',
+      className: 'form__btn-danger btn btn-danger',
       type: 'reset',
       text: 'Очистить',
     },
@@ -117,19 +117,20 @@ const createRow = ({task, priority, status}, index) => {
 
   const tdPriority = document.createElement('td');
   tdPriority.classList.add('priority');
-  tdPriority.textContent = priority;
+  tdPriority.textContent =
+    `${priority === 'table-danger' ? 'срочная' : priority === 'table-warning' ? 'важная' : 'обычная'}`;
 
   const tdBtnDel = document.createElement('td');
   const btnDel = document.createElement('button');
   btnDel.type = 'button';
-  btnDel.classList.add('btn', 'btn-danger', 'me-1');
+  btnDel.classList.add('btn', 'btn-danger');
   btnDel.textContent = 'Удалить';
   tdBtnDel.append(btnDel);
 
   const tdBtnComplete = document.createElement('td');
   const btnComplete = document.createElement('button');
   btnComplete.type = 'button';
-  btnComplete.classList.add('btn', 'btn-success', 'me-1');
+  btnComplete.classList.add('btn', 'btn-success');
   btnComplete.textContent = `${status === 'Выполнено' ? 'Отменить' : 'Завершить'}`;
   tdBtnComplete.append(btnComplete);
 

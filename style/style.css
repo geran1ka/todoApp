@@ -1,9 +1,11 @@
-body {
-  min-width: 768px;
+.app-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
 }
 
-.table-light {
-  vertical-align: middle;
+.form {
+  min-width: 640px;
 }
 
 .form__select {
@@ -15,5 +17,30 @@ body {
   border: 1px solid #ced4da;
   padding: 0.375rem 0.75rem;
   border-radius: 0.25rem;
+}
+
+.container {
+  max-width: 1024px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.table {
+  min-width: 768px;
+}
+
+.table-light,
+.table-success {
+  vertical-align: middle;
+}
+
+.task,
+.text-decoration-line-through {
+  width: 90%;
+}
+
+.status,
+.priority {
+white-space: nowrap;
 }
 
