@@ -117,10 +117,15 @@ const createRow = ({task, status}, index) => {
 
   const btnComplete = document.createElement('button');
   btnComplete.type = 'button';
-  btnComplete.classList.add('btn', 'btn-success');
+  btnComplete.classList.add('btn', 'btn-success', 'me-1');
   btnComplete.textContent = `${status === 'Выполнено' ? 'Отменить' : 'Завершить'}`;
-  tdActions.append(btnDel, btnComplete);
 
+  const btnEdit = document.createElement('button');
+  btnEdit.type = 'button';
+  btnEdit.classList.add('btn', 'btn-primary');
+  btnEdit.textContent = 'Редактировать';
+
+  tdActions.append(btnDel, btnComplete, btnEdit);
   tr.append(tdNumber, tdTask, tdStatus, tdActions);
   return tr;
 };

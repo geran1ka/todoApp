@@ -2,7 +2,7 @@ import {addContactPage} from './createElement.js';
 import {getStorage, removeStorage, addNewData as addNewTask, setStorage} from './localStorage.js';
 import {renderTask} from './renderElement.js';
 
-export const btnSaveActive = (form, btnSave, btnReset ) => {
+export const btnSaveActive = (form, btnSave, btnReset) => {
   const input = form.querySelector('.form-control');
   if (!input.value) btnSave.setAttribute('disabled', 'disabled');
 
@@ -23,7 +23,7 @@ export const formControl = (form, user, list, btnSave) => {
     const index = getStorage(user).length;
 
     newTask.status = 'В процессе';
-    //newTask.id = Math.random().toString().substring(2, 10);
+    // newTask.id = Math.random().toString().substring(2, 10);
 
     addNewTask(user, newTask);
     addContactPage(list, newTask, index);
@@ -78,3 +78,36 @@ export const completeControl = (list, user) => {
     }
   });
 };
+
+export const editControl = (list, user) => {
+  list.addEventListener('click', (e) => {
+    const target = e.target;
+    if (target.closest('.btn-primary')) {
+      const tr = target.closest('.table-light, .table-success');
+      const taskComplete = tr.querySelector('.task, .text-decoration-line-through');
+      console.log('taskComplete: ', taskComplete);
+      
+      const statusComplete = tr.querySelector('.status');
+      const buttonComplete = tr.querySelector('.btn-success');
+      const buttonEdit = tr.querySelector('.btn-primary');
+      const task = getStorage(user);
+      const id = tr.id;
+      if (target.closest('.btn-primary').textContent === 'Редактировать') {
+        taskComplete.setAttribute('contenteditable', true);
+        tr.className = 'table-light';
+        taskComplete.className = 'task';
+        statusComplete.textContent = 'В процессе';
+        buttonComplete.textContent = 'Завершить';
+        buttonEdit.textContent = 'Сохранить';
+      } else {
+        taskComplete.setAttribute('contenteditable', false);
+        buttonEdit.textContent = 'Редактировать';
+        console.log(taskComplete.textContent);
+      }
+      task[id].status = statusComplete.textContent;
+      task[id].task = taskComplete.textContent;
+      setStorage(user, task);
+    }
+  });
+};
+

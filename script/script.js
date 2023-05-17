@@ -1,5 +1,5 @@
 import {renderTodoTask, renderTask} from './module/renderElement.js';
-import {btnSaveActive, completeControl, deleteControl, formControl} from './module/control.js';
+import {btnSaveActive, completeControl, deleteControl, editControl, formControl} from './module/control.js';
 import {getStorage} from './module/localStorage.js';
 
 const user = 'Роман';
@@ -14,7 +14,7 @@ const init = () => {
     listTitle,
     form,
     btnSave,
-    btnReset
+    btnReset,
   } = renderTodoTask(app, user);
 
   const task = getStorage(user);
@@ -23,6 +23,7 @@ const init = () => {
   formControl(form, user, list, btnSave);
   deleteControl(user, list, task);
   completeControl(list, user);
+  editControl(list, user);
 };
 
 init();
