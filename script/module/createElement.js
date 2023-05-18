@@ -16,13 +16,12 @@ export const createModal = () => {
     <div class="modal__dialog modal-dialog">
     <div class="modal__content modal-content">
       <div class="modal__header modal-header">
-        <h3 class="modal-title">Добро пожаловать в приложение ToDoApp!</h3>
+        <h3 class="modal__title modal-title mb-4 ">Добро пожаловать в приложение ToDoApp!</h3>
     </div>
       <div class="modal__body modal-body">
         <form class="modal__form">
-          <label for="user" class="form-group me-3 mb-3">Введите имя пользователя</label>
-          <input type="text" name="user" class="modal__input form-control mb-3">
-          <button class="btn btn-info ">Запустить приложение</button>
+          <input type="text" name="user" class="modal__input form-control mb-4" required placeholder="Введите Ваше имя">
+          <button class="btn btn-primary ">Запустить приложение</button>
         </form>
       </div>
     </div>
@@ -138,7 +137,7 @@ const createRow = ({task, priority, status}, index) => {
 
   const tdNumber = document.createElement('td');
   tdNumber.classList.add('number');
-  //tdNumber.textContent = index + 1;
+  // tdNumber.textContent = index + 1;
 
   const tdTask = document.createElement('td');
   tdTask.classList.add(`${status === 'Выполнено' ? 'text-decoration-line-through' : 'task'}`);
@@ -178,6 +177,25 @@ const createRow = ({task, priority, status}, index) => {
   return tr;
 };
 
+const createFooter = (user) => {
+  const footer = document.createElement('footer');
+  footer.classList.add('footer');
+
+  const footerContainer = createContainer();
+  footer.append(footerContainer);
+  footer.footerContainer = footerContainer;
+
+  const btnExit = document.createElement('button');
+  btnExit.classList.add('btn', 'btn-danger');
+  btnExit.textContent = `Выйти из приложения todoApp ${user}!`;
+  footerContainer.append(btnExit);
+
+  return {
+    footer,
+    btnExit,
+  };
+};
+
 const addContactPage = (list, task, index) => {
   list.append(createRow(task, index));
 };
@@ -188,5 +206,6 @@ export {
   createTable,
   createForm,
   createRow,
+  createFooter,
   addContactPage,
 };

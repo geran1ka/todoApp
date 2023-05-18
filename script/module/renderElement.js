@@ -1,11 +1,9 @@
-import {createTitle, createContainer, createTable, createForm, createRow, createModal} from './createElement.js';
+import {createTitle, createContainer, createTable, createForm, createRow, createModal, createFooter} from './createElement.js';
 
 export const renderOverlay = (app) => {
   const {overlay, modal} = createModal();
   const body = document.querySelector('body');
-
   body.append(overlay);
-  //overlay.show();
   return {
     overlay,
     modal,
@@ -21,8 +19,8 @@ export const renderTodoTask = (app, user) => {
   const table = createTable();
   tableWrapper.append(table);
   const {form, btnSave, btnReset} = createForm();
-  app.append(title, form, tableWrapper);
-
+  const {footer, btnExit} = createFooter(user);
+  app.append(title, form, tableWrapper, footer);
 
   return {
     title,
@@ -31,6 +29,8 @@ export const renderTodoTask = (app, user) => {
     form,
     btnSave,
     btnReset,
+    footer,
+    btnExit,
   };
 };
 

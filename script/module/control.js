@@ -1,16 +1,6 @@
 import {constTarget} from '../function/constTarget.js';
 import {addContactPage} from './createElement.js';
 import {getStorage, removeStorage, addNewData as addNewTask, setStorage} from './localStorage.js';
-import {init} from '../script.js';
-export const loadApp = (overlay, modal) => {
-  modal.addEventListener('submit', e => {
-    e.preventDefault();
-    modal.classList.remove('modal_active');
-    overlay.classList.remove('overlay_active');
-    const user = Object.fromEntries(new FormData(e.target));
-    init(user.user);
-  });
-}
 
 export const btnSaveActive = (form, btnSave, btnReset) => {
   const input = form.task;
@@ -112,6 +102,15 @@ export const editControl = (list, user) => {
       });
       setStorage(user, task);
     }
+  });
+};
+
+export const exitControl = (btnExit, firstStartApp) => {
+  btnExit.addEventListener('click', () => {
+    console.log('выход');
+    firstStartApp.countSt = 0;
+    setStorage('countSt', firstStartApp);
+    location.reload();
   });
 };
 
