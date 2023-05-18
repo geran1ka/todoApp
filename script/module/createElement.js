@@ -4,6 +4,35 @@ const createContainer = () => {
   container.classList.add('container');
   return container;
 };
+// создание модального окна
+
+export const createModal = () => {
+  const overlay = document.createElement('div');
+  overlay.classList.add('overlay', 'overlay_active');
+
+  const modal = document.createElement('div');
+  modal.classList.add('modal', 'modal_active');
+  modal.insertAdjacentHTML('beforeend', `
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Добро пожаловать в приложение ToDoApp!</h3>
+    </div>
+      <div class="modal-body">
+        <p>Представьтесь пожалуйста.</p>
+      </div>
+    </div>
+  </div>
+  `);
+
+  overlay.append(modal);
+
+  return {
+    overlay,
+    modal,
+  };
+};
+
 // функция создания заголовка
 const createTitle = user => {
   const h3 = document.createElement('h3');

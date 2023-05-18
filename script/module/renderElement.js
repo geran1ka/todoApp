@@ -1,4 +1,14 @@
-import {createTitle, createContainer, createTable, createForm, createRow} from './createElement.js';
+import {createTitle, createContainer, createTable, createForm, createRow, createModal} from './createElement.js';
+
+export const renderOverlay = (app) => {
+  const {overlay, modal} = createModal();
+  app.append(overlay);
+  //overlay.show();
+  return {
+    overlay,
+    modal,
+  };
+};
 
 export const renderTodoTask = (app, user) => {
   const title = createTitle(user);
