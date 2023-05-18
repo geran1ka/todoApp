@@ -13,20 +13,23 @@ export const createModal = () => {
   const modal = document.createElement('div');
   modal.classList.add('modal', 'modal_active');
   modal.insertAdjacentHTML('beforeend', `
-    <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal__dialog modal-dialog">
+    <div class="modal__content modal-content">
+      <div class="modal__header modal-header">
         <h3 class="modal-title">Добро пожаловать в приложение ToDoApp!</h3>
     </div>
-      <div class="modal-body">
-        <p>Представьтесь пожалуйста.</p>
+      <div class="modal__body modal-body">
+        <form class="modal__form">
+          <label for="user" class="form-group me-3 mb-3">Введите имя пользователя</label>
+          <input type="text" name="user" class="modal__input form-control mb-3">
+          <button class="btn btn-info ">Запустить приложение</button>
+        </form>
       </div>
     </div>
   </div>
   `);
 
   overlay.append(modal);
-
   return {
     overlay,
     modal,
@@ -99,9 +102,9 @@ const createForm = () => {
       <input type="text" class="form-control" name="task" placeholder="ввести задачу" required>
     </label>
     <select class="form__select me-3" name="priority">
-      <option value="table-light" selected>обычная</option>
-      <option value="table-warning">важная</option>
-      <option value="table-danger">срочная</option>
+      <option class="table-light" value="table-light" selected>обычная</option>
+      <option class="table-warning" value="table-warning">важная</option>
+      <option class="table-danger" value="table-danger">срочная</option>
     </select>
     `);
 

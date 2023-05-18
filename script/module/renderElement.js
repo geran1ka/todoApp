@@ -2,7 +2,9 @@ import {createTitle, createContainer, createTable, createForm, createRow, create
 
 export const renderOverlay = (app) => {
   const {overlay, modal} = createModal();
-  app.append(overlay);
+  const body = document.querySelector('body');
+
+  body.append(overlay);
   //overlay.show();
   return {
     overlay,

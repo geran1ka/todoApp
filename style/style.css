@@ -29,6 +29,15 @@
   height: auto;
 }
 
+.modal__content {
+  background-color: aqua;
+}
+
+.modal__header,
+.modal__form,
+.modal__input {
+  text-align: center;
+}
 
 .form {
   min-width: 640px;
