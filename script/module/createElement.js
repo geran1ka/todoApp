@@ -81,6 +81,7 @@ const createTable = () => {
   `);
 
   const tbody = document.createElement('tbody');
+  tbody.classList.add('form__tbody');
 
   table.append(thead, tbody);
   // добавление свойства tbody в эелемент table
@@ -134,7 +135,7 @@ const createRow = ({task, priority, status}, index) => {
 
   const tdNumber = document.createElement('td');
   tdNumber.classList.add('number');
-  tdNumber.textContent = index + 1;
+  //tdNumber.textContent = index + 1;
 
   const tdTask = document.createElement('td');
   tdTask.classList.add(`${status === 'Выполнено' ? 'text-decoration-line-through' : 'task'}`);

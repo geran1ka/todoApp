@@ -44,7 +44,7 @@ export const deleteControl = (user, list) => {
         const number = +tr.id;
         removeStorage(user, number);
         tr.remove();
-        renderTask(list, getStorage(user));
+        //renderTask(list, getStorage(user));
       } else {
         target.closest('.btn-danger').blur();
       }
