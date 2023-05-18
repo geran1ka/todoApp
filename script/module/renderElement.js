@@ -1,4 +1,12 @@
-import {createTitle, createContainer, createTable, createForm, createRow, createModal, createFooter} from './createElement.js';
+import {
+  createTitle,
+  createContainer,
+  createTable,
+  createForm,
+  createRow,
+  createModal,
+  createFooter,
+} from './createElement.js';
 
 export const renderOverlay = (app) => {
   const {overlay, modal} = createModal();
@@ -40,3 +48,4 @@ export const renderTask = (elem, data) => {
   elem.append(...allRow);
   return allRow;
 };
+

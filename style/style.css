@@ -114,3 +114,36 @@ white-space: nowrap;
   transform: translate(-50%, -50%);
   counter-increment: count;
 }
+
+.th__number,
+.th__task,
+.th__status,
+.th__priority {
+  position: relative;
+}
+
+.th__number::after,
+.th__task::after,
+.th__status::after,
+.th__priority::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: auto;
+  width: 10px;
+}
+
+.up::after {
+  content: "\2191";
+}
+
+.down::after {
+  content: "\2193";
+}
+
+.footer {
+  padding: 30px;
+  color: #fff;
+  text-align: center;
+}

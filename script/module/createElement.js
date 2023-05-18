@@ -16,7 +16,7 @@ export const createModal = () => {
     <div class="modal__dialog modal-dialog">
     <div class="modal__content modal-content">
       <div class="modal__header modal-header">
-        <h3 class="modal__title modal-title mb-4 ">Добро пожаловать в приложение ToDoApp!</h3>
+        <h3 class="modal__title modal-title mb-4">Добро пожаловать в приложение ToDoApp!</h3>
     </div>
       <div class="modal__body modal-body">
         <form class="modal__form">
@@ -75,9 +75,9 @@ const createTable = () => {
   thead.insertAdjacentHTML('beforeend', `
     <tr>
       <th>№</th>
-      <th>Задача</th>
-      <th>Статус</th>
-      <th>Приоритет</th>
+      <th class="th__task" data-sort="th__task">Задача</th>
+      <th class="th__status" data-sort="th__status">Статус</th>
+      <th class="th__priority" data-sort="th__priority">Приоритет</th>
       <th colspan="3" class="text-center">Действия</th>
     </tr>
   `);

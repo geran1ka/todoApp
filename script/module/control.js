@@ -107,9 +107,8 @@ export const editControl = (list, user) => {
 
 export const exitControl = (btnExit, firstStartApp) => {
   btnExit.addEventListener('click', () => {
-    console.log('выход');
-    firstStartApp.countSt = 0;
-    setStorage('countSt', firstStartApp);
+    firstStartApp.firstStartApp = 0;
+    setStorage('firstStartApp', firstStartApp);
     location.reload();
   });
 };
